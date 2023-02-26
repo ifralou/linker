@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workplace</title>
+    <script>
+        function openAll() {
+            for(name of Object.getOwnPropertyNames(params)) {
+                window.open(params[name], "_blank")
+            }
+        }
+    </script>
+
+</head>
+<body>
+<h2>Copy that page to desired browser window and press the button.</h2>
+<ul id="list">
+
+</ul>
+
+<button onclick="openAll()">Open all links</button>
+
+</body>
+<script >
+    var params = Object.fromEntries(
+        (new URLSearchParams(window.location.search)).entries()
+    );
+    console.log(params)
+    for( name of Object.getOwnPropertyNames(params)) {
+        let link = document.createElement("a");
+        link.setAttribute("href", params[name])
+        link.innerText = name
+        document.getElementById("list").append(link)
+    }
+</script>
+</html>

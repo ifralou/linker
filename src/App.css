@@ -9,18 +9,39 @@
 .main-grid {
   display: grid;
   grid-gap: 30px;
-  grid-template-columns: minmax(50px, 1fr) minmax(100px, 4fr) minmax(50px, 1fr);
+  grid-template-columns: minmax(50px, 1fr) minmax(100px, 3fr) minmax(50px, 1fr);
 }
 
-.calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+.info-wrapper {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+}
+
+.background-gradient {
+  background-image: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+.info-header {
+  padding: 0.5rem 0;
 }
 
 .calendar-cell {
   width: 20%;
-  height: 20%;
+  height: 80px;
+  margin: 2px
 }
+
+.calendar-cell:hover {
+  background-color: #434344;
+  border-radius: 5px;
+}
+
+.calendar-cell-name {
+  width: 20%;
+  margin-bottom: 2rem;
+  color: cornflowerblue;
+}
+
 
 .tabs {
   justify-content: space-between;

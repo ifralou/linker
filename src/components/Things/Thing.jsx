@@ -6,7 +6,7 @@ import {NativeTypes} from "react-dnd-html5-backend"
 const Thing = ({name, description, links, addLink}) => {
     const [result, drop] = useDrop({
         accept: NativeTypes.HTML,
-        drop : (item) => {
+        drop: (item) => {
             item.dataTransfer.items[1].getAsString(
                 (linkData) => {
                     let data = linkData.split("\n")
@@ -21,13 +21,10 @@ const Thing = ({name, description, links, addLink}) => {
     })
 
     return (
-            <li ref={drop} className={result.isOver ? "hoveredLink" : ""}>
-                <h3>{name}</h3>
-                <p>{description}</p>
-                <div>
-                    {JSON.stringify(links)}
-                </div>
-            </li>
+        <li ref={drop} className={result.isOver ? "hoveredLink" : ""}>
+            <h3>{name}</h3>
+            <p>{description}</p>
+        </li>
     )
 };
 
