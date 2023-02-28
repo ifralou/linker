@@ -6,6 +6,7 @@ import {linkerReducer} from "./utils/reducer.js";
 import Calendar from "./components/Calendar/Calendar.jsx";
 import CurrentDay from "./components/CurrentDay/CurrentDay.jsx";
 import CurrentThing from "./components/CurrentThing/CurrentThing.jsx";
+import dayjs from "dayjs";
 
 const rightSideState = {
     thing: "thing",
@@ -13,6 +14,7 @@ const rightSideState = {
 }
 
 function App() {
+
     const [things, dispatch] = useReducer(linkerReducer, [
         {
             name: "Test",
@@ -21,13 +23,26 @@ function App() {
         }
     ]);
 
-    const getCurrentThing = (name) =>
-       things.filter(t => t.name === name)[0]
-
     const [rightSidePanel, setRightSidePanel] = useState({
         type: rightSideState.thing,
         name: "Test"
     });
+
+    const [activities, setActivities] = useState([
+        {
+            "25.02.2023": [
+                {
+                    name: "Test",
+                    from: "10:30",
+                    to: "12:30"
+                }
+            ]
+        }
+    ]);
+
+    const ndegetCurrentThing = (name) =>
+        things.filter(t => t.name === name)[0]
+
 
     return (
         <main className="App">
