@@ -5,7 +5,7 @@ import locale from "dayjs/locale/de";
 dayjs.locale(locale)
 dayjs.extend(wd)
 
-const monthNames = [
+export const monthNames = [
     "January",
     "February",
     "March",
@@ -42,8 +42,21 @@ export const getHours = ({start, end}) => getDifferenceWithArg(start, end, 'hour
 export const getMinutes = ({start, end}) => getDifferenceWithArg(start, end, 'minutes', true)
 export const getSeconds = ({start, end}) => getDifferenceWithArg(start, end, 'seconds', true)
 
-export function getCurrentMonthMap() {
-    let now = dayjs();
+export const calendar = () => initiateCalendar(dayjs())
+
+function initiateCalendar(reference) {
+   return {
+       month: reference.month(),
+       year: reference.year(),
+       calendarMap: () => getCurrentMonthMap(reference),
+       next: () => initiateCalendar(reference.add(1, 'month')),
+       prev: () => initiateCalendar(reference.subtract(1, 'month'))
+   }
+}
+
+
+
+function getCurrentMonthMap(now) {
     let firstDayOfMap = now.startOf("month").weekday(0)
     let end = now.endOf("month").weekday(7).add(1, 'day')
 
@@ -56,7 +69,9 @@ export function getCurrentMonthMap() {
             firstDayOfMap.month() === end.month() &&
             firstDayOfMap.year() === firstDayOfMap.year())
         ) {
-        currentWeek.push(firstDayOfMap)
+
+        currentWeek.push(firstDayOfMap);
+
         if (currentWeekDay++ === 6) {
             result.push(currentWeek);
             currentWeek = []
@@ -65,8 +80,7 @@ export function getCurrentMonthMap() {
         firstDayOfMap = firstDayOfMap.add(1, 'day')
     }
 
-    return {
-        name: monthNames[now.month()],
-        days: result
-    }
+    console.log(result)
+
+    return result;
 }

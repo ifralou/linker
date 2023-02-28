@@ -36,6 +36,10 @@
   border-radius: 5px;
 }
 
+.calendar-darker-day {
+  opacity: 0.3;
+}
+
 .calendar-cell-name {
   width: 20%;
   margin-bottom: 2rem;
