@@ -22,6 +22,9 @@ const getTime = ({start, end}, period) => Math.floor(end.diff(start, period, tru
 export const getFormattedDifference = (timer) =>
     `${getTime(timer, "hour")}:${getTime(timer, "minute")}:${getTime(timer, "second")}`
 
+export const dateToString = (day) =>
+    `${day.date()}.${day.month() + 1}.${day.year()}`;
+
 const zeroPad = (num) => (0 <= num && num <= 9) ? '0' + num : num;
 const getDifferenceWithArg = ({start, end}, arg, pad) => {
     let res = Math.floor(end.diff(start, arg, true)) % 60;

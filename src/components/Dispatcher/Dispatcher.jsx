@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {actions} from "../../utils/reducer.js";
 
-const Dispatcher = ({dispatch}) => {
+const Dispatcher = ({addNewThing}) => {
     const [show, setShow] = useState(true);
 
     const [thing, setThing] = useState({
@@ -18,9 +17,7 @@ const Dispatcher = ({dispatch}) => {
 
     let handleSubmit = (e) => {
         e.preventDefault()
-        dispatch({
-            type: actions.addThing, payload: thing
-        })
+        addNewThing(thing);
         setThing({name: "", description: "", links: []})
     }
 

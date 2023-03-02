@@ -1,6 +1,7 @@
 export function linkerReducer (state, action) {
     switch (action.type) {
         case actions.addThing:
+            console.dir(action.payload)
             return [...state, action.payload];
         case actions.deleteThing:
             return state.filter(item => item !== action.payload)

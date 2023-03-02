@@ -1,12 +1,11 @@
-import { useReducer, useState} from 'react'
 import './App.css'
 import Things from "./components/Things/Things.jsx";
 import Dispatcher from "./components/Dispatcher/Dispatcher.jsx";
-import {linkerReducer} from "./utils/reducer.js";
 import Calendar from "./components/Calendar/Calendar.jsx";
-import CurrentDay from "./components/CurrentDay/CurrentDay.jsx";
-import CurrentThing from "./components/CurrentThing/CurrentThing.jsx";
-import dayjs from "dayjs";
+import useActivities from "./hooks/useActivities.js";
+import useRightPanelState from "./hooks/useRightPanelState.js";
+import RightPanel from "./components/RightPanel.jsx";
+import useThings from "./hooks/useThings.js";
 
 const rightSideState = {
     thing: "thing",
@@ -15,49 +14,28 @@ const rightSideState = {
 
 function App() {
 
-    const [things, dispatch] = useReducer(linkerReducer, [
-        {
-            name: "Test",
-            description: "just to test something",
-            links: []
-        }
-    ]);
-
-    const [rightSidePanel, setRightSidePanel] = useState({
-        type: rightSideState.thing,
-        name: "Test"
-    });
-
-    const [activities, setActivities] = useState([
-        {
-            "25.02.2023": [
-                {
-                    name: "Test",
-                    from: "10:30",
-                    to: "12:30"
-                }
-            ]
-        }
-    ]);
-
-    const ndegetCurrentThing = (name) =>
-        things.filter(t => t.name === name)[0]
-
+    const [things, {addNewThing, addLinkToThing}] = useThings();
+    const [activities, addNewActivity] = useActivities();
+    const [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToDescription}] = useRightPanelState();
 
     return (
         <main className="App">
-            <Dispatcher dispatch={dispatch}/>
+            <Dispatcher addNewThing={addNewThing}/>
             <section className="main-grid">
-                <Things things={things} dispatch={dispatch}/>
-                <Calendar/>
-                <div>
-                    {rightSidePanel.type === rightSideState.thing &&
-                        <CurrentThing thing={getCurrentThing(rightSidePanel.name)}/>
-                    }
-                    {rightSidePanel.type === rightSideState.day &&
-                        <CurrentDay/>
-                    }
-                </div>
+                <Things
+                    things={things}
+                    addLinkToThing={addLinkToThing}
+                    displayThing={moveToSelectedThing}
+                />
+
+                <Calendar
+                    activitis={activities}
+                    dispalyDay={moveToSelectedDay}
+                />
+
+                <RightPanel
+                    currentPanel={currentPanel}
+                />
             </section>
         </main>
     )

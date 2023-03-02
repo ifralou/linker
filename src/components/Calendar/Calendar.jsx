@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {calendar, monthNames} from "../../utils/time.js";
+import {calendar, dateToString, monthNames} from "../../utils/time.js";
 import CalendarTile from "./CalendarTile.jsx";
 
-const Calendar = () => {
+const Calendar = ({activitis}) => {
     const dayNames = [
         "M", "T", "W", "T", "F", "S", "S"
     ]
@@ -38,6 +38,7 @@ const Calendar = () => {
                             dayData={d}
                             dayIndex={j}
                             currentMonth={monthCalendar.month}
+                            activities={activitis[dateToString(d)]}
                         />)}
                     </div>
                 )}

@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
-import {DndProvider, useDrop} from "react-dnd";
+import React from 'react';
+import {useDrop} from "react-dnd";
 import {NativeTypes} from "react-dnd-html5-backend"
 
 
-const Thing = ({name, description, links, addLink}) => {
+const Thing = ({thingData, addLink}) => {
+    const {name, description, color} = thingData;
+
     const [result, drop] = useDrop({
         accept: NativeTypes.HTML,
         drop: (item) => {
@@ -22,8 +24,14 @@ const Thing = ({name, description, links, addLink}) => {
 
     return (
         <li ref={drop} className={result.isOver ? "hoveredLink" : ""}>
-            <h3>{name}</h3>
-            <p>{description}</p>
+            <div className={"thing-content"}>
+                <h3>{name}</h3>
+                <p>{description}</p>
+            </div>
+            <div
+                className={"thing-color-tile"}
+                style={{backgroundColor: color}}
+            ></div>
         </li>
     )
 };

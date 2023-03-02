@@ -10,7 +10,6 @@ const Timer = () => {
     useEffect(() => {
         let stamp = setInterval(() => {
             setTimer(prev => ({...prev, end: getCurrentTime()}))
-            console.log("Interval")
         }, 1000)
 
         return () => { clearInterval(stamp) }

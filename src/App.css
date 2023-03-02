@@ -25,10 +25,30 @@
   padding: 0.5rem 0;
 }
 
+.calendar-activities-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.calendar-activities-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
 .calendar-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 20%;
   height: 80px;
-  margin: 2px
+  margin: 1rem 0
+}
+
+.calendar-tile-date {
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .calendar-cell:hover {
@@ -45,7 +65,6 @@
   margin-bottom: 2rem;
   color: cornflowerblue;
 }
-
 
 .tabs {
   justify-content: space-between;
@@ -81,7 +100,6 @@ aside {
   top: 0
 }
 
-
 ul {
   padding: 0;
   display: grid;
@@ -90,10 +108,12 @@ ul {
 
 li {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   list-style-type: none;
   background-color: #434344;
   text-align: left;
-  padding: 1rem;
 }
 
 li:hover {
@@ -112,6 +132,14 @@ li > p {
 .hoveredLink {
   background-color: goldenrod;
   filter: brightness(80%);
+}
+
+.thing-color-tile {
+  width: 20px;
+}
+
+.thing-content {
+  padding: 0 1rem ;
 }
 
 .thing-delete {
