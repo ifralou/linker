@@ -8,9 +8,9 @@ export const panels = {
 export default function useRightPanelState() {
     const [currentPanel, setCurrentPanel] = useState({ panel: panels.description });
 
-    const moveToSelectedThing = (thing) => setCurrentPanel({
+    const moveToSelectedThing = (name) => setCurrentPanel({
         panel : panels.selectedThing,
-        thing : thing
+        thingName : name
     });
     const moveToSelectedDay = (day) => setCurrentPanel({
         panel: panels.selectedDay,

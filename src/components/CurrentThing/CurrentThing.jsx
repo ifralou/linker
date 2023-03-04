@@ -2,11 +2,12 @@ import React from 'react';
 
 const CurrentThing = ({thing}) => {
     const {name, description, links} = thing
+    console.log(thing)
 
     const openInNewWindow = () => {
         let redirectTo = new URL(document.location.href + "redirect.html");
         links.forEach(({title, url}) => redirectTo.searchParams.append(title, url))
-        let workspace = window.open(redirectTo)
+        window.open(redirectTo)
     };
 
     return (
@@ -23,10 +24,10 @@ const CurrentThing = ({thing}) => {
                     expand all in new window
                 </button>
                 <ul>
-                    {links.map( ({title, url}) =>
-                        <ul>
-                            <a target={"_blank"} href={url}>{title}</a>
-                        </ul>
+                    {links.map( ({title, url}, i) =>
+                        <li key={i}>
+                            <a key={i} target={"_blank"} href={url}>{title}</a>
+                        </li>
                     )}
                 </ul>
             </div>

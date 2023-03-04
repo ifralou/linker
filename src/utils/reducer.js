@@ -1,4 +1,6 @@
-export function linkerReducer (state, action) {
+import {stringToColour} from "./color.js";
+
+export function linkerReducer(state, action) {
     switch (action.type) {
         case actions.addThing:
             console.dir(action.payload)
@@ -8,13 +10,14 @@ export function linkerReducer (state, action) {
         case actions.addLinkToThing:
             let index = state.findIndex(item => item.name === action.payload.name);
             let item = state[index]
-            if(item.links.map(l => l.url).includes(action.payload.link.url)) {
+            if (item.links.map(l => l.url).includes(action.payload.link.url)) {
                 return state;
             }
             return [...state.slice(0, index), {
-               name: item.name,
-               description: item.description,
-               links: [...item.links, action.payload.link]
+                name: item.name,
+                description: item.description,
+                links: [...item.links, action.payload.link],
+                color: stringToColour(item.name)
             }, ...state.slice(index + 1, state.length)]
     }
 
@@ -22,7 +25,7 @@ export function linkerReducer (state, action) {
 }
 
 export let actions = {
-    addThing : 1,
+    addThing: 1,
     deleteThing: 2,
     addLinkToThing: 3
 }

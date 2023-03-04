@@ -8,11 +8,11 @@ export default function useThings() {
             name: "Test",
             description: "just to test something",
             links: [],
-            color: stringToColour("        dispatch()Test")
+            color: stringToColour("Test")
         }
     ]);
 
-    const addThing = (thing) => {
+    const addNewThing = (thing) => {
         dispatch({
             type: actions.addThing,
             payload: {
@@ -23,6 +23,7 @@ export default function useThings() {
     };
 
     const addLinkToThing = (name, link) => {
+        console.log(link)
         dispatch({
             type: actions.addLinkToThing,
             payload: {
@@ -32,5 +33,5 @@ export default function useThings() {
         })
     }
 
-    return [things, {addThing, addLinkToThing}]
+    return [things, {addNewThing, addLinkToThing}]
 }

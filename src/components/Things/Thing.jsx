@@ -3,7 +3,7 @@ import {useDrop} from "react-dnd";
 import {NativeTypes} from "react-dnd-html5-backend"
 
 
-const Thing = ({thingData, addLink}) => {
+const Thing = ({thingData, addLink, clickAction}) => {
     const {name, description, color} = thingData;
 
     const [result, drop] = useDrop({
@@ -23,16 +23,24 @@ const Thing = ({thingData, addLink}) => {
     })
 
     return (
-        <li ref={drop} className={result.isOver ? "hoveredLink" : ""}>
-            <div className={"thing-content"}>
-                <h3>{name}</h3>
-                <p>{description}</p>
-            </div>
-            <div
-                className={"thing-color-tile"}
-                style={{backgroundColor: color}}
-            ></div>
-        </li>
+        <div onClick={(e) => {
+            e.preventDefault()
+            clickAction(name);
+        }
+        }>
+            <li ref={drop} className={result.isOver ? "hoveredLink" : ""}>
+                <div className={"thing-content"}>
+                    <h3>{name}</h3>
+                    <p>{description}</p>
+                </div>
+                <div
+                    className={"thing-color-tile"}
+                    style={{backgroundColor: color}}
+                ></div>
+            </li>
+
+
+        </div>
     )
 };
 

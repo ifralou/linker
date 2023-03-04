@@ -3,14 +3,10 @@ import Things from "./components/Things/Things.jsx";
 import Dispatcher from "./components/Dispatcher/Dispatcher.jsx";
 import Calendar from "./components/Calendar/Calendar.jsx";
 import useActivities from "./hooks/useActivities.js";
-import useRightPanelState from "./hooks/useRightPanelState.js";
-import RightPanel from "./components/RightPanel.jsx";
+import useRightPanelState, {panels} from "./hooks/useRightPanelState.js";
 import useThings from "./hooks/useThings.js";
-
-const rightSideState = {
-    thing: "thing",
-    day: "day"
-}
+import CurrentThing from "./components/CurrentThing/CurrentThing.jsx";
+import CurrentDay from "./components/CurrentDay/CurrentDay.jsx";
 
 function App() {
 
@@ -26,6 +22,7 @@ function App() {
                     things={things}
                     addLinkToThing={addLinkToThing}
                     displayThing={moveToSelectedThing}
+                    clickAction={moveToSelectedThing}
                 />
 
                 <Calendar
@@ -33,9 +30,16 @@ function App() {
                     dispalyDay={moveToSelectedDay}
                 />
 
-                <RightPanel
-                    currentPanel={currentPanel}
-                />
+                <div>
+                    {currentPanel.panel === panels.selectedThing &&
+                        <CurrentThing
+                            thing={things.filter(t => t.name === currentPanel.thingName)[0]}
+                        />
+                    }
+                    {currentPanel.panel === panels.selectedDay &&
+                        <CurrentDay/>
+                    }
+                </div>
             </section>
         </main>
     )
