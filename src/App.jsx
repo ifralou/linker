@@ -27,7 +27,7 @@ function App() {
 
                 <Calendar
                     activitis={activities}
-                    dispalyDay={moveToSelectedDay}
+                    clickAction={moveToSelectedDay}
                 />
 
                 <div>
@@ -37,7 +37,10 @@ function App() {
                         />
                     }
                     {currentPanel.panel === panels.selectedDay &&
-                        <CurrentDay/>
+                        <CurrentDay
+                            name={currentPanel.dayName}
+                            day={activities[currentPanel.dayName]}
+                        />
                     }
                 </div>
             </section>

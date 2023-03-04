@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {calendar, dateToString, monthNames} from "../../utils/time.js";
 import CalendarTile from "./CalendarTile.jsx";
 
-const Calendar = ({activitis}) => {
+const Calendar = ({activitis, clickAction}) => {
     const dayNames = [
         "M", "T", "W", "T", "F", "S", "S"
     ]
@@ -12,6 +12,7 @@ const Calendar = ({activitis}) => {
     const toPreviousMonth = () => setMonthCalendar(current => current.prev())
 
     const backToActualMonth = () => setMonthCalendar(calendar())
+
 
     return (
         <div className={"info-wrapper"}>
@@ -32,13 +33,15 @@ const Calendar = ({activitis}) => {
                         </div>)
                     }
                 </div>
+
                 {monthCalendar.calendarMap().map((week, i) =>
                     <div className={"week"} key={i}>
                         {week.map((d, j) => <CalendarTile key={j}
-                            dayData={d}
-                            dayIndex={j}
-                            currentMonth={monthCalendar.month}
-                            activities={activitis[dateToString(d)]}
+                                                          dayData={d}
+                                                          dayIndex={j}
+                                                          currentMonth={monthCalendar.month}
+                                                          activities={activitis[dateToString(d)]}
+                                                          clickAction={clickAction}
                         />)}
                     </div>
                 )}

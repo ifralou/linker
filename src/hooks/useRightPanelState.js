@@ -12,9 +12,9 @@ export default function useRightPanelState() {
         panel : panels.selectedThing,
         thingName : name
     });
-    const moveToSelectedDay = (day) => setCurrentPanel({
+    const moveToSelectedDay = (dayName) => setCurrentPanel({
         panel: panels.selectedDay,
-        day: day
+        dayName: dayName
     })
 
     const moveToDescription = () => setCurrentPanel({ panel : panels.description})
