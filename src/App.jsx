@@ -7,12 +7,16 @@ import useRightPanelState, {panels} from "./hooks/useRightPanelState.js";
 import useThings from "./hooks/useThings.js";
 import CurrentThing from "./components/CurrentThing/CurrentThing.jsx";
 import CurrentDay from "./components/CurrentDay/CurrentDay.jsx";
+import useTimer from "./hooks/useTimer.js";
 
 function App() {
 
     const [things, {addNewThing, addLinkToThing}] = useThings();
     const [activities, addNewActivity] = useActivities();
     const [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToDescription}] = useRightPanelState();
+    const [startTimer, updateTimer, finishTimer] = useTimer(() => {
+       addNewActivity()
+    });
 
     return (
         <main className="App">

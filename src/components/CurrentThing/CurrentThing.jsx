@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CurrentThing = ({thing}) => {
+const CurrentThing = ({thing, startTimer}) => {
     const {name, description, links} = thing
     console.log(thing)
 
@@ -19,6 +19,7 @@ const CurrentThing = ({thing}) => {
             <div>
                 stats right here
             </div>
+
             <div>
                 <button onClick={openInNewWindow}>
                     expand all in new window
@@ -31,6 +32,11 @@ const CurrentThing = ({thing}) => {
                     )}
                 </ul>
             </div>
+            <button className={"info-button background-gradient"}
+                    onClick={() => startTimer(name)}
+            >
+                Start session
+            </button>
         </section>
     );
 };

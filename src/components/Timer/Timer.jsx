@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {getCurrentTime, getHours, getMinutes, getSeconds} from "../../utils/time.js";
 
-const Timer = () => {
+//updateTimer(name, end, diff);
+//startTimer(name, start);
+//endTImer(name
+
+const Timer = ({thingName, finish}) => {
+
+    const [running, setRunning] = useState();
     const [timer, setTimer] = useState({
         start: getCurrentTime(),
         end: getCurrentTime(),
@@ -15,10 +21,18 @@ const Timer = () => {
         return () => { clearInterval(stamp) }
     }, [])
 
+    const endTimer = () => {
+        setRunning(r => !r);
+        finish(thingName, timer);
+    }
+
 
     return (
-        <div>
-            {`${getHours(timer)}:${getMinutes(timer)}:${getSeconds(timer)}`}
+        <div onClick={endTimer}
+             className={`timer-base ${running ? "timer-running" : "timer-ended"}`}
+        >
+            <p>{thingName}: </p>
+            <p>{`${getHours(timer)}:${getMinutes(timer)}:${getSeconds(timer)}`}</p>
         </div>
     );
 };
