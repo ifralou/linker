@@ -7,7 +7,7 @@ import {getCurrentTime, getHours, getMinutes, getSeconds} from "../../utils/time
 
 const Timer = ({thingName, finish}) => {
 
-    const [running, setRunning] = useState();
+    const [running, setRunning] = useState(false);
     const [timer, setTimer] = useState({
         start: getCurrentTime(),
         end: getCurrentTime(),
@@ -24,6 +24,7 @@ const Timer = ({thingName, finish}) => {
     const endTimer = () => {
         setRunning(r => !r);
         finish(thingName, timer);
+
     }
 
 

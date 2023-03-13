@@ -143,7 +143,7 @@ li > p {
 }
 
 .thing-color-tile {
-  width: 20px;
+  width: 50px;
 }
 
 .thing-content {
@@ -164,9 +164,78 @@ li > p {
   opacity: 1;
 }
 
+.thing-timer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
 .week {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+
+.timerbutton-wrapper {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #9a9ae1;
+  cursor: pointer;
+}
+
+/*
+  Animations
+ */
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(100px);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .moon {
+    animation: orbit 6000ms linear infinite;
+  }
+}
+
+.planet{
+  width: 190px;
+  height: 190px;
+  background: dodgerblue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet:hover {
+  background-color: #41dfff;
+  transition: background-color 0.1s ease-in;
+}
+
+.moon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+  background: silver;
+  border-radius: 50%;
+}
+
+.timer-planet-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }

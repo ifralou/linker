@@ -28,15 +28,19 @@ const Thing = ({thingData, addLink, clickAction}) => {
             clickAction(name);
         }
         }>
-            <li ref={drop} className={result.isOver ? "hoveredLink" : ""}>
+            <li
+                ref={drop}
+                className={result.isOver ? "hoveredLink" : ""}
+            >
                 <div className={"thing-content"}>
                     <h3>{name}</h3>
                     <p>{description}</p>
                 </div>
                 <div
-                    className={"thing-color-tile"}
+                    className={"thing-color-tile" }
                     style={{backgroundColor: color}}
-                ></div>
+                >
+                </div>
             </li>
 
 

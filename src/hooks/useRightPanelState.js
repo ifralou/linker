@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 export const panels = {
-    description: 1,
+    timer: 1,
     selectedThing: 2,
     selectedDay: 3
 }
@@ -17,7 +17,7 @@ export default function useRightPanelState() {
         dayName: dayName
     })
 
-    const moveToDescription = () => setCurrentPanel({ panel : panels.description})
+    const moveToTimer = () => setCurrentPanel({ panel : panels.timer })
 
-    return [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToDescription}]
+    return [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToTimer}]
 }

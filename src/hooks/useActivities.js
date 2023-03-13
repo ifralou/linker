@@ -22,10 +22,7 @@ export default function useActivities() {
 
     const addNewActivity = (date, name, from, to) =>
         setActivities( prev => {
-            return {
-                ...prev,
-                date: [...prev[date], {name: name, from: from, to:to}]
-            }
+            return {...prev, [date]: [...(prev[date] ?? []), {name: name, from: from, to:to}]}
         });
 
     return [activities, addNewActivity]
