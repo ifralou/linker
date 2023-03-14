@@ -83,7 +83,7 @@ aside {
   background-color: #535bf2;
   position: absolute;
   border-bottom-right-radius: 3rem;
-  padding: 2rem;
+  padding: 1rem;
   top: -80px;
   left: 0;
   transition: top 0.5s;
@@ -104,7 +104,16 @@ aside {
   background-color: coral;
 }
 
+.aside-normal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .aside-shown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   top: 0
 }
 
@@ -242,4 +251,18 @@ li > p {
 
 .focusable {
   tab-index: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+
+.month-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }

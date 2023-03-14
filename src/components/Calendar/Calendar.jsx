@@ -16,7 +16,7 @@ const Calendar = ({activitis, clickAction}) => {
 
     return (
         <div className={"info-wrapper"}>
-            <div>
+            <div className={"month-name"}>
                 <button onClick={toPreviousMonth}>prev</button>
 
                 <h2 onClick={backToActualMonth} className={"info-header"}>{
