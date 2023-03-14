@@ -239,3 +239,7 @@ li > p {
   justify-content: center;
   position: relative;
 }
+
+.focusable {
+  tab-index: 0;
+}

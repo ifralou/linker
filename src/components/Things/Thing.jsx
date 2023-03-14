@@ -22,12 +22,22 @@ const Thing = ({thingData, addLink, clickAction}) => {
         })
     })
 
+    const actionOnEnter = (e) => {
+        if (e.key === "Enter")
+            e.target.click()
+    }
+
+    const clickHandler = (e) => {
+        e.preventDefault();
+        clickAction(name);
+    }
+
+
     return (
-        <div onClick={(e) => {
-            e.preventDefault()
-            clickAction(name);
-        }
-        }>
+        <div tabIndex={0}
+             onClick={clickHandler}
+             onKeyDown={actionOnEnter}
+        >
             <li
                 ref={drop}
                 className={result.isOver ? "hoveredLink" : ""}
@@ -37,13 +47,10 @@ const Thing = ({thingData, addLink, clickAction}) => {
                     <p>{description}</p>
                 </div>
                 <div
-                    className={"thing-color-tile" }
+                    className={"thing-color-tile"}
                     style={{backgroundColor: color}}
-                >
-                </div>
+                ></div>
             </li>
-
-
         </div>
     )
 };
