@@ -39,7 +39,7 @@ const Thing = ({thingData, addLink, clickAction}) => {
             tabIndex={0}
             onClick={clickHandler}
             onKeyDown={actionOnEnter}
-            className={"thing-wrapper"}
+            className={`thing-wrapper ${result.isOver? "" : ""}`}
         >
             <div className={"thing-content"}>
                 <h2>{name}</h2>

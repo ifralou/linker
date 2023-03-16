@@ -64,14 +64,16 @@ nav > a {
 
 .things-wrapper {
   grid-area: column;
+
   background-color: var(--tl-bg-sand);
   border-radius: 35px;
   color: var(--bg-primary);
   padding: 0 1rem;
 }
 
+
 .thing-wrapper {
-  border-radius: 35px;
+  border-radius: 15px;
   overflow: hidden;
   background-color: var(--bg-secondary);
 }
