@@ -27,16 +27,16 @@ function App() {
     console.log(activities)
 
     return (
-        <main className="App">
+        <main>
             <Dispatcher addNewThing={addNewThing}/>
-            <section className="main-grid">
-                <Things
-                    things={things}
-                    addLinkToThing={addLinkToThing}
-                    displayThing={moveToSelectedThing}
-                    clickAction={moveToSelectedThing}
-                />
+            <Things
+                things={things}
+                addLinkToThing={addLinkToThing}
+                displayThing={moveToSelectedThing}
+                clickAction={moveToSelectedThing}
+            />
 
+            <div className={"panel-wrapper"}>
                 <Calendar
                     activitis={activities}
                     clickAction={moveToSelectedDay}
@@ -67,7 +67,7 @@ function App() {
                         />
                     }
                 </div>
-            </section>
+            </div>
         </main>
     )
 }

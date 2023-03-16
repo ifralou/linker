@@ -1,15 +1,32 @@
 #root {
   width: 100%;
-  height: 70vh;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.main-grid {
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  min-width: 900px;
+  max-width: 1700px;
+  width: 75%;
+  background-color: var(--bg-secondary);
+  border-radius: 25px;
+
+  padding: 2rem 2rem;
+
   display: grid;
   grid-gap: 30px;
-  grid-template-columns: minmax(50px, 1fr) minmax(100px, 3fr) minmax(50px, 1fr);
+  grid-template-columns: minmax(50px, 1fr) minmax(100px, 3fr) ;
 }
 
 .info-wrapper {
@@ -79,7 +96,7 @@
 }
 
 aside {
-  width: 100%;
+  width: 95%;
   background-color: #535bf2;
   position: absolute;
   border-bottom-right-radius: 3rem;
@@ -105,12 +122,14 @@ aside {
 }
 
 .aside-normal {
+  background-color: var(--secondary-background);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .aside-shown {
+  background-color: var(--secondary-background);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -177,6 +196,10 @@ li > p {
   display: flex;
   align-items: center;
   padding: 10px;
+}
+
+.thing-wrapper {
+  background-color: var(--secondary-background);
 }
 
 .week {
@@ -265,4 +288,43 @@ form {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-text {
+  margin: 0;
+  padding: 0;
+}
+
+.pad {
+  margin-right: 2rem;
+}
+
+.modal-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(234,123,123, 0.5);
+}
+
+.modal {
+  padding: 3rem;
+  background-color: #535bf2;
+}
+
+.panel-wrapper {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: minmax(50px, 1fr) minmax(50px, 1fr);
+
+
 }

@@ -1,50 +1,41 @@
-import React, {useState} from 'react';
-import {IoLogoIonic} from "react-icons/io"
+import React, {useEffect, useRef, useState} from 'react';
+import {IoLogoIonic} from "react-icons/io";
+import {MdAddTask} from "react-icons/md";
+import AddThingForm from "./AddThingForm.jsx";
+import {createPortal} from "react-dom";
 
 const Dispatcher = ({addNewThing}) => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
+    const [showForm, setShowForm] = useState(false);
 
-    const [thing, setThing] = useState({
-        name: "", description: "", links: []
-    })
-
-    let handleCurrentThingName = (e) => setThing(prev => ({
-        ...prev, name: e.target.value
-    }))
-
-    let handleCurrentDescription = (e) => setThing(prev => ({
-        ...prev, description: e.target.value
-    }))
-
-    let handleSubmit = (e) => {
-        e.preventDefault()
-        if (thing.name !== "") {
-            addNewThing(thing);
-            setThing({name: "", description: "", links: []})
-        }
-    }
+    useEffect(() => {
+       setTimeout(() => {
+          setShow(true);
+          setTimeout(() => setShow(false), 1500);
+       },200);
+    }, [])
 
     return (
-        <aside className={show ? "aside-shown" : "aside-normal"}>
-            <IoLogoIonic size={70}/>
-            <div>
-                <form onSubmit={handleSubmit}>
+        <aside
+            className={show ? "aside-shown" : "aside-normal"}
+            onMouseEnter={() => setShow(true)}
+            onMouseLeave={() => setShow(false)}
+        >
+            <div className={"row"}>
+                <IoLogoIonic size={70}/>
+                <h1 className={"logo-text"}>Linker MK.I</h1>
+            </div>
 
-                    <input type="text"
-                           value={thing.name}
-                           onChange={handleCurrentThingName}
-                           placeholder={"New thing"}
-                           onFocus={() => setShow(true)}
-                    />
+            <div className={"row"}>
+                {
+                    showForm &&
+                        createPortal(
+                            <AddThingForm addNewThing={addNewThing} setShow={setShow} setShowForm={setShowForm}/>,
+                            document.body
+                        )
+                }
 
-                    <input type="text"
-                           value={thing.description}
-                           onChange={handleCurrentDescription}
-                           placeholder={"Description of the thing"}
-                    />
-
-                    <input type="submit" value="Submit"/>
-                </form>
+                <MdAddTask tabIndex={0} size={45} className={"pad"} onClick={ () => setShowForm(true)}/>
             </div>
 
             <div

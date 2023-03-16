@@ -37,6 +37,7 @@ const Thing = ({thingData, addLink, clickAction}) => {
         <div tabIndex={0}
              onClick={clickHandler}
              onKeyDown={actionOnEnter}
+             className={"thing-wrapper"}
         >
             <li
                 ref={drop}
