@@ -34,25 +34,21 @@ const Thing = ({thingData, addLink, clickAction}) => {
 
 
     return (
-        <div tabIndex={0}
-             onClick={clickHandler}
-             onKeyDown={actionOnEnter}
-             className={"thing-wrapper"}
+        <li
+            ref={drop}
+            tabIndex={0}
+            onClick={clickHandler}
+            onKeyDown={actionOnEnter}
+            className={"thing-wrapper"}
         >
-            <li
-                ref={drop}
-                className={result.isOver ? "hoveredLink" : ""}
-            >
-                <div className={"thing-content"}>
-                    <h3>{name}</h3>
-                    <p>{description}</p>
-                </div>
-                <div
-                    className={"thing-color-tile"}
-                    style={{backgroundColor: color}}
-                ></div>
-            </li>
-        </div>
+            <div className={"thing-content"}>
+                <h2>{name}</h2>
+            </div>
+            <div
+                className={"thing-color-tile"}
+                style={{backgroundColor: color}}
+            ></div>
+        </li>
     )
 };
 

@@ -6,7 +6,7 @@ import {HTML5Backend} from "react-dnd-html5-backend";
 const Things = ({things, addLinkToThing, clickAction}) => {
 
     return (
-        <section>
+        <section className={"things-wrapper"}>
             <DndProvider backend={HTML5Backend}>
                 <ul>
                     {things.length === 0 ?

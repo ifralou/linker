@@ -29,14 +29,15 @@ function App() {
     return (
         <main>
             <Dispatcher addNewThing={addNewThing}/>
-            <Things
-                things={things}
-                addLinkToThing={addLinkToThing}
-                displayThing={moveToSelectedThing}
-                clickAction={moveToSelectedThing}
-            />
+            <section className={"panel-main"}>
 
-            <div className={"panel-wrapper"}>
+                <Things
+                    things={things}
+                    addLinkToThing={addLinkToThing}
+                    displayThing={moveToSelectedThing}
+                    clickAction={moveToSelectedThing}
+                />
+
                 <Calendar
                     activitis={activities}
                     clickAction={moveToSelectedDay}
@@ -67,7 +68,7 @@ function App() {
                         />
                     }
                 </div>
-            </div>
+            </section>
         </main>
     )
 }
