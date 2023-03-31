@@ -1,6 +1,6 @@
 #root {
-  width: 100%;
-  height: 100vh;
+width: 100%;
+height: 100vh;
   padding: 0;
   margin: 0;
 
@@ -27,6 +27,7 @@ main {
   grid-template-columns: minmax(50px, 1fr) minmax(100px, 4fr) ;
 }
 
+
 .panel-main {
   background-color: var(--bg-tertiary);
   padding: 2rem 2rem;
@@ -37,7 +38,7 @@ main {
 
   grid-template-areas:
   "column calendar"
-  "column info";
+  "tasks tasks";
 
   grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
 }
@@ -63,12 +64,33 @@ nav > a {
 }
 
 .things-wrapper {
-  grid-area: column;
+  grid-area: tasks;
 
   background-color: var(--tl-bg-sand);
   border-radius: 35px;
   color: var(--bg-primary);
   padding: 0 1rem;
+}
+
+.things-wrapper > ul {
+  display: grid;
+  grid-template-areas:
+  "t t t t"
+  "t t t t";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.thing-wrapper {
+  grid-area: "t";
+}
+
+.thing-content > h2 {
+  padding: 1rem;
+}
+
+.info-pannel {
+  grid-area: column;
 }
 
 
@@ -78,10 +100,16 @@ nav > a {
   background-color: var(--bg-secondary);
 }
 
+.welcome-pannel {
+  color: var(--bg-primary);
+}
+
 .info-wrapper {
+  padding: 1rem 2rem;
   grid-area: calendar;
-  background-color: #1a1a1a;
+  background-color: #ADD8E6;
   border-radius: 10px;
+  color: var(--bg-primary);
 }
 
 .info-button {
@@ -97,8 +125,9 @@ nav > a {
 }
 
 .info-header {
-  padding: 0.5rem 0;
+  line-height: 1rem;
 }
+
 
 .calendar-activities-row {
   display: flex;
@@ -117,16 +146,21 @@ nav > a {
   flex-direction: column;
   align-items: center;
   width: 20%;
-  height: 80px;
+  height: 60px;
 }
 
-.calendar-tile-date {
-  padding-bottom: 0;
-  margin-bottom: 0;
+.logo-text {
+  cursor: pointer;
 }
+
+.calendar-cell:hover { 
+  color: white
+}
+
+
 
 .calendar-cell:hover {
-  background-color: #434344;
+  background-color: var(--bg-primary);
   border-radius: 5px;
 }
 
@@ -136,8 +170,10 @@ nav > a {
 
 .calendar-cell-name {
   width: 20%;
-  margin-bottom: 2rem;
-  color: cornflowerblue;
+  color: var(--bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .tabs {
@@ -325,8 +361,9 @@ form {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding-bottom: 0.7rem;
 }
+
 
 .row {
   display: flex;
@@ -373,4 +410,15 @@ form {
 .visual-adjust {
   position: relative;
   top: -4px;
+}
+
+
+
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
 }

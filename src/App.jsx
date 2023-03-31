@@ -17,7 +17,7 @@ function App() {
 
     const [activities, addNewActivity] = useActivities();
 
-    const [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToTimer}] = useRightPanelState();
+    const [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToTimer, moveToDescription}] = useRightPanelState();
 
     const [timer, startTimer, finishTimer, isActive] = useTimer(({name, start, end}) => {
         console.log(name, start, end);
@@ -28,23 +28,14 @@ function App() {
 
     return (
         <main>
-            <Dispatcher addNewThing={addNewThing}/>
+            <Dispatcher 
+                addNewThing={addNewThing}
+                moveToDescription={moveToDescription}
+            />
             <section className={"panel-main"}>
 
-                <Things
-                    things={things}
-                    addLinkToThing={addLinkToThing}
-                    displayThing={moveToSelectedThing}
-                    clickAction={moveToSelectedThing}
-                />
-
-                <Calendar
-                    activitis={activities}
-                    clickAction={moveToSelectedDay}
-                />
-
                 {/* Panel dispatch */}
-                <div>
+                <div className='info-panel'>
                     {currentPanel.panel === panels.selectedThing &&
                         <CurrentThing
                             thing={things.filter(t => t.name === currentPanel.thingName)[0]}
@@ -67,7 +58,49 @@ function App() {
                             backToThing={moveToSelectedThing}
                         />
                     }
+                    {currentPanel.panel === panels.description &&
+                        <div className='welcome-pannel'>
+                            <h2>Hi there!</h2>
+                            <h3>Welcome to the linker app!</h3>
+
+                            <p>
+                                On you upper right you could see calendar.
+                                All you activities on different tasks are shows there.
+                            </p>
+
+                            <p>
+                                Under calendar there are your tasks. You could drag and drog
+                                links from you url bar to save them to the appropriate task.
+                            </p>
+
+                            <p>
+                                If you want to add a task click big circle on the left.
+                            </p>
+
+                            <p>
+                              To get back to the description just click on the Linker MK.I
+                            </p>
+
+                            <h4>Enjoy!</h4>
+                        
+                        </div>
+                    }
                 </div>
+
+                
+
+                <Calendar
+                    activitis={activities}
+                    clickAction={moveToSelectedDay}
+                />
+
+                <Things
+                    things={things}
+                    addLinkToThing={addLinkToThing}
+                    displayThing={moveToSelectedThing}
+                    clickAction={moveToSelectedThing}
+                />
+                
             </section>
         </main>
     )
