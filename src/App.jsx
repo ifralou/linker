@@ -27,9 +27,10 @@ function App() {
     console.log(activities)
 
     return (
-        <main className="App">
+        <main>
             <Dispatcher addNewThing={addNewThing}/>
-            <section className="main-grid">
+            <section className={"panel-main"}>
+
                 <Things
                     things={things}
                     addLinkToThing={addLinkToThing}
