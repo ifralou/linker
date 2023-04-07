@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {calendar, dateToString, monthNames} from "../../utils/time.js";
 import CalendarTile from "./CalendarTile.jsx";
+import {AiFillLeftCircle, AiFillRightCircle} from "react-icons/ai";
 
 const Calendar = ({activitis, clickAction}) => {
     const dayNames = [
@@ -16,16 +17,19 @@ const Calendar = ({activitis, clickAction}) => {
 
     return (
         <div className={"info-wrapper"}>
+
             <div className={"month-name"}>
-                <button onClick={toPreviousMonth}>prev</button>
+                <AiFillLeftCircle size={30} onClick={toPreviousMonth}/>
 
                 <h2 onClick={backToActualMonth} className={"info-header"}>{
                     `${monthNames[monthCalendar.month]}, ${monthCalendar.year}`
                 }</h2>
 
-                <button onClick={toNextMonth}>next</button>
+                <AiFillRightCircle size={30} onClick={toNextMonth}/>
             </div>
-            <div>
+
+            <div className='calendar-wrapper'>
+
                 <div className={"week"}>
                     {dayNames.map((dayName, i) =>
                         <div className={"calendar-cell-name"} key={i}>
