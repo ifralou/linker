@@ -10,6 +10,7 @@ import CurrentDay from "./components/CurrentDay/CurrentDay.jsx";
 import TimerPanel from "./components/TimerPanel/TimerPanel.jsx";
 import useTimer from "./hooks/useTimer.js";
 import {dateToString} from "./utils/time.js";
+import AddThingForm from "./components/Dispatcher/AddThingForm.jsx";
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
 
     const [activities, addNewActivity] = useActivities();
 
-    const [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToTimer, moveToDescription}] = useRightPanelState();
+    const [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToTimer, moveToDescription, moveToNewThing}] = useRightPanelState();
 
     const [timer, startTimer, finishTimer, isActive] = useTimer(({name, start, end}) => {
         console.log(name, start, end);
@@ -31,6 +32,7 @@ function App() {
             <Dispatcher 
                 addNewThing={addNewThing}
                 moveToDescription={moveToDescription}
+                moveToNewThing={moveToNewThing}
             />
             <section className={"panel-main"}>
 
@@ -85,9 +87,10 @@ function App() {
                         
                         </div>
                     }
+                    {currentPanel.panel === panels.newThing && <div>
+                        <AddThingForm addNewThing={addNewThing}/>
+                    </div>}
                 </div>
-
-                
 
                 <Calendar
                     activitis={activities}

@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {datesDB} from "../persistence/DatePersistance.js";
 
 export default function useActivities() {
     /**
@@ -11,19 +12,27 @@ export default function useActivities() {
      *     }
      * ]
      */
-    const [activities, setActivities] = useState({
-        "2.3.2023" : [{
-            name: "Test",
-            from: "13:30",
-            to: "14:00"
-        }]
-    })
+    const [activities, setActivities] = useState({})
+
+    useEffect(() => {
+        const mapping = Object.create(null);
+        datesDB.persistedActivities.toArray().then(activities => {
+            activities.forEach( ({date, name, from, to}) => {
+                if(!mapping[date])
+                    mapping[date] = [];
+                mapping[date].push({name, from, to});
+            })
+            setActivities(mapping);
+        });
+    }, []);
 
 
-    const addNewActivity = (date, name, from, to) =>
+    const addNewActivity = (date, name, from, to) => {
+        datesDB.persistedActivities.add({date: date, name: name, from: from, to: to});
         setActivities( prev => {
             return {...prev, [date]: [...(prev[date] ?? []), {name: name, from: from, to:to}]}
         });
+    }
 
     return [activities, addNewActivity]
 }

@@ -4,7 +4,8 @@ export const panels = {
     timer: 1,
     selectedThing: 2,
     selectedDay: 3,
-    description: 4
+    description: 4,
+    newThing: 5
 }
 export default function useRightPanelState() {
     const [currentPanel, setCurrentPanel] = useState({ panel: panels.description });
@@ -22,5 +23,7 @@ export default function useRightPanelState() {
 
     const moveToDescription = () => setCurrentPanel({panel: panels.description})
 
-    return [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToTimer, moveToDescription}]
+    const moveToNewThing = () => setCurrentPanel({panel: panels.newThing});
+
+    return [currentPanel, {moveToSelectedThing, moveToSelectedDay, moveToTimer, moveToDescription, moveToNewThing}]
 }

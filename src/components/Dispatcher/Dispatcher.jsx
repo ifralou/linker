@@ -6,7 +6,7 @@ import {createPortal} from "react-dom";
 import Menu from "./Menu.jsx";
 import {motion} from "framer-motion";
 
-const Dispatcher = ({addNewThing, moveToDescription}) => {
+const Dispatcher = ({addNewThing, moveToDescription, moveToNewThing}) => {
 
     return (
         <aside>
@@ -16,8 +16,9 @@ const Dispatcher = ({addNewThing, moveToDescription}) => {
 
             <div className={"row center"}>
                 <motion.div
-                    initial={{rotate: 0 }}
+                    initial={{rotate: 0}}
                     whileHover={{rotate: 270, cursor: "pointer"}}
+                    onClick={moveToNewThing}
                 >
                     <IoLogoIonic size={200} className={"visual-adjust"}/>
                 </motion.div>

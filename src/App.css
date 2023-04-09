@@ -81,9 +81,6 @@ nav > a {
   gap: 0.5rem;
 }
 
-.thing-wrapper {
-  grid-area: "t";
-}
 
 .thing-content > h2 {
   padding: 1rem;
@@ -398,7 +395,12 @@ form {
 
 .modal {
   padding: 3rem;
-  background-color: #535bf2;
+  background-color: var(--bg-secondary);
+  height: 100%;
+}
+
+.modal-header {
+  padding-bottom: 1rem;
 }
 
 .panel-wrapper {
