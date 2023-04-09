@@ -37,7 +37,7 @@ function App() {
             <section className={"panel-main"}>
 
                 {/* Panel dispatch */}
-                <div className='info-panel'>
+                <div className='info-panel maximize'>
                     {currentPanel.panel === panels.selectedThing &&
                         <CurrentThing
                             thing={things.filter(t => t.name === currentPanel.thingName)[0]}

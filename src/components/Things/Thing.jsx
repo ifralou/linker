@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDrop} from "react-dnd";
 import {NativeTypes} from "react-dnd-html5-backend"
+import {motion} from "framer-motion";
 
 
 const Thing = ({thingData, addLink, clickAction}) => {
@@ -20,7 +21,9 @@ const Thing = ({thingData, addLink, clickAction}) => {
             isOver: monitor.isOver(),
             canDrop: monitor.canDrop(),
         })
-    })
+    });
+
+    const [hovered, setHovered] = useState(false);
 
     const actionOnEnter = (e) => {
         if (e.key === "Enter")
@@ -32,6 +35,50 @@ const Thing = ({thingData, addLink, clickAction}) => {
         clickAction(name);
     }
 
+    const mainTransition = {
+        rest: {
+            backgroundColor: "#FFFFFF",
+            transition: {
+                duration: 0.2,
+                type: "tween",
+            }
+        },
+        hover: {
+            backgroundColor: color,
+            transition: {
+                duration: 0.05,
+                type: "tween",
+            }
+        }
+    }
+
+    const additionalTransition = {
+        rest: {
+            backgroundColor: color,
+            transition: {
+                duration: 0.2,
+                type: "tween",
+            }
+        },
+        hover: {
+            backgroundColor: "#FFFFFF",
+            transition: {
+                duration: 0.05,
+                type: "tween",
+            }
+        }
+    }
+
+    const textTransition = {
+        rest: {},
+        hover: {
+            color: "#FFF",
+            transition: {
+                duration: 0.05,
+                type: "tween"
+            }
+        }
+    }
 
     return (
         <li
@@ -39,15 +86,30 @@ const Thing = ({thingData, addLink, clickAction}) => {
             tabIndex={0}
             onClick={clickHandler}
             onKeyDown={actionOnEnter}
-            className={`thing-wrapper ${result.isOver? "" : ""}`}
+            className={"thing-dnd"}
         >
-            <div className={"thing-content"}>
-                <h2>{name}</h2>
-            </div>
-            <div
-                className={"thing-color-tile"}
-                style={{backgroundColor: color}}
-            ></div>
+            <motion.div
+                className={"thing-wrapper"}
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+            >
+
+                <motion.div
+                    className={"thing-content"}
+                    variants={mainTransition}
+                >
+                    <motion.h2
+                        variants={textTransition}
+                    >{name}</motion.h2>
+                </motion.div>
+
+                <motion.div
+                    className={"thing-color-tile"}
+                    variants={additionalTransition}
+                ></motion.div>
+
+            </motion.div>
         </li>
     )
 };

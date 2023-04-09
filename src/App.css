@@ -92,9 +92,17 @@ nav > a {
 
 
 .thing-wrapper {
-  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
   overflow: hidden;
   background-color: var(--bg-secondary);
+}
+
+.thing-dnd {
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .welcome-pannel {
@@ -102,15 +110,24 @@ nav > a {
 }
 
 .info-wrapper {
-  padding: 1rem 2rem;
+  padding: 1.5rem 1rem;
   grid-area: calendar;
   background-color: #ADD8E6;
   border-radius: 10px;
   color: var(--bg-primary);
 }
 
-.info-button {
+.current-thing-wrapper {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+}
+
+.maximize {
   width: 100%;
+  height: 100%;
+}
+
+.info-button {
 }
 
 .info-button:hover {
@@ -118,11 +135,12 @@ nav > a {
 }
 
 .background-gradient {
-  background-image: linear-gradient(to right, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  border-radius: 15px;
+  background-color: var(--bg-primary);
 }
 
 .info-header {
-  line-height: 1rem;
+  line-height: 1.5rem;
 }
 
 
@@ -136,6 +154,16 @@ nav > a {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+}
+
+.current-thing-header {
+  padding-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.current-thing-wrapper-header {
+  display: flex;
+  flex-direction: row;
 }
 
 .calendar-cell {
@@ -194,14 +222,12 @@ nav > a {
 }
 
 .aside-normal {
-  background-color: var(--secondary-background);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .aside-shown {
-  background-color: var(--secondary-background);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -248,6 +274,7 @@ li > p {
 
 .thing-content {
   display: flex;
+  flex-grow: 1;
   flex-direction: row;
   padding: 0 1rem ;
 }
@@ -414,7 +441,29 @@ form {
   top: -4px;
 }
 
+.ex-button {
+  width: 100%;
+  border-radius: 15px;
+}
 
+.thing-links-list {
+  height: 200px;
+  overflow: auto;
+}
+
+.thing-links-list > li {
+  padding: 0.2rem 0.2rem;
+  background-color: transparent;
+  border-bottom: 1px solid var(--bg-primary);
+}
+
+.thing-links-list > li > a {
+  color: var(--bg-primary);
+}
+
+.ex-button:hover {
+  opacity: 90%;
+}
 
 h2 {
   padding: 0;

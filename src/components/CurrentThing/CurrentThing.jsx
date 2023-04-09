@@ -11,32 +11,34 @@ const CurrentThing = ({thing, startTimer}) => {
     };
 
     return (
-        <section className={"info-wrapper"}>
-            <div className={"info-wrapper background-gradient"}>
-                <h2 className={"info-header"}>{name}</h2>
-                <div>{description}</div>
+        <section className={"info-wrapper current-thing-wrapper"}>
+            <div className="current-thing-wrapper-header">
+                <div className={"current-thing-header"}>
+                    <h2 className={"info-header"}>{name}</h2>
+                    <div>{description}</div>
+                </div>
+                <button className={"info-button background-gradient"}
+                        onClick={() => startTimer(name)}
+                >Start session</button>
             </div>
             <div>
                 stats right here
             </div>
 
             <div>
-                <button onClick={openInNewWindow}>
-                    expand all in new window
-                </button>
-                <ul>
-                    {links.map( ({title, url}, i) =>
+
+                <ul className="thing-links-list">
+                    {links.map(({title, url}, i) =>
                         <li key={i}>
                             <a key={i} target={"_blank"} href={url}>{title}</a>
                         </li>
                     )}
                 </ul>
+                <button className={"ex-button"} onClick={openInNewWindow}>
+                    expand all in new window
+                </button>
             </div>
-            <button className={"info-button background-gradient"}
-                    onClick={() => startTimer(name)}
-            >
-                Start session
-            </button>
+
         </section>
     );
 };
