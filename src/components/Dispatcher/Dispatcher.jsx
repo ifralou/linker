@@ -23,9 +23,6 @@ const Dispatcher = ({addNewThing, moveToDescription, moveToNewThing}) => {
                     <IoLogoIonic size={200} className={"visual-adjust"}/>
                 </motion.div>
             </div>
-
-            <Menu/>
-
         </aside>
     );
 };
