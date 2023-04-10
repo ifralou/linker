@@ -1,10 +1,11 @@
 import React from 'react';
 import {stringToColour} from "../../utils/color.js";
 import {dateToString} from "../../utils/time.js";
+import {Box} from "@chakra-ui/react";
 
 const CalendarTile = ({dayIndex, dayData, currentMonth, activities, clickAction}) => {
     return (
-        <div onClick={(e) => {
+        <Box onClick={(e) => {
             e.preventDefault();
             clickAction(dateToString(dayData));
         }} className={`calendar-cell ${dayData.month() === currentMonth ? "" : "calendar-darker-day"}`} key={dayIndex}>
@@ -19,7 +20,7 @@ const CalendarTile = ({dayIndex, dayData, currentMonth, activities, clickAction}
                     )
                 }
             </div>
-        </div>
+        </Box>
     );
 };
 

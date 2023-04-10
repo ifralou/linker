@@ -1,6 +1,22 @@
 import React from 'react';
+import {useApplicationContext} from "../../customReact/contexts/AppFuncContext.jsx";
+import CardWrapper from "../ChakraUICutomes/CardWrapper.jsx";
+import {
+    Box,
+    Button,
+    CardBody,
+    Text,
+    CardFooter,
+    CardHeader,
+    Heading,
+    HStack,
+    Flex,
+    List,
+    ListItem, Link, ListIcon
+} from "@chakra-ui/react";
+import {AiOutlineArrowRight, BiLinkExternal, MdOutlineLink} from "react-icons/all.js";
 
-const CurrentThing = ({thing, startTimer}) => {
+const CurrentThing = ({thing}) => {
     const {name, description, links} = thing
     console.log(thing)
 
@@ -10,36 +26,55 @@ const CurrentThing = ({thing, startTimer}) => {
         window.open(redirectTo)
     };
 
+    const {
+        timerContext: {
+            startTimer,
+        },
+        panesContext: {
+            moveToTimer
+        }
+    } = useApplicationContext();
+
+    const dispatchTimer = () => {
+        startTimer(name);
+        moveToTimer();
+    };
+
     return (
-        <section className={"info-wrapper current-thing-wrapper"}>
-            <div className="current-thing-wrapper-header">
-                <div className={"current-thing-header"}>
-                    <h2 className={"info-header"}>{name}</h2>
-                    <div>{description}</div>
-                </div>
-                <button className={"info-button background-gradient"}
-                        onClick={() => startTimer(name)}
-                >Start session</button>
-            </div>
-            <div>
-                stats right here
-            </div>
+        <CardWrapper as="section">
+            <CardHeader>
+               <Flex justifyContent="space-between">
+                  <Box>
+                      <Heading>{name}</Heading>
+                      <Text>{description}</Text>
+                  </Box>
+                   <Button variant="solid" onClick={dispatchTimer}>
+                      Start session
+                   </Button>
+               </Flex>
+            </CardHeader>
 
-            <div>
+            <CardBody>
+                <Text>Stat right here</Text>
+                <List>
+                    {
+                        links.map(({title, url}, i) =>
+                            <ListItem key={i}>
+                                <ListIcon as={MdOutlineLink}/>
+                                <Link key={i} target="_blank" href={url}>{title}</Link>
+                            </ListItem>
+                        )
+                    }
+                </List>
+            </CardBody>
 
-                <ul className="thing-links-list">
-                    {links.map(({title, url}, i) =>
-                        <li key={i}>
-                            <a key={i} target={"_blank"} href={url}>{title}</a>
-                        </li>
-                    )}
-                </ul>
-                <button className={"ex-button"} onClick={openInNewWindow}>
-                    expand all in new window
-                </button>
-            </div>
+            <CardFooter>
+                <Button rightIcon={<AiOutlineArrowRight/>} variant="outline" onClick={openInNewWindow} width="full">
+                    Expand all in a new window
+                </Button>
+            </CardFooter>
 
-        </section>
+        </CardWrapper>
     );
 };
 

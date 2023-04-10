@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {stringToColour} from "../utils/color.js";
-import {thingsDB} from "../persistence/ThingsPersistence.js";
+import {stringToColour} from "../../utils/color.js";
+import {thingsDB} from "../../persistence/ThingsPersistence.js";
 
 export default function useThings() {
 

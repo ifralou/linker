@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {datesDB} from "../persistence/DatePersistance.js";
+import {datesDB} from "../../persistence/DatePersistance.js";
 
 export default function useActivities() {
     /**

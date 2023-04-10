@@ -1,20 +1,35 @@
 import React from 'react';
-import {timerToString} from "../../hooks/useTimer.js";
+import {timerToString} from "../../customReact/hooks/useTimer.js";
+import {useApplicationContext} from "../../customReact/contexts/AppFuncContext.jsx";
+import CardWrapper from "../ChakraUICutomes/CardWrapper.jsx";
+import {Card, CardHeader, Heading} from "@chakra-ui/react";
 
-const TimerPanel = ({timer, finish, backToThing}) => {
-    console.log(timer);
+const TimerPanel = () => {
+
+    const {
+        timerContext: {
+            timer,
+            finishTimer
+        },
+        panesContext: {
+            moveToSelectedThing
+        }
+
+    } = useApplicationContext();
+
     const {name, start, end} = timer;
     const action = (e) => {
         e.preventDefault()
         console.log("clicked button");
-        finish();
-        backToThing(name);
+        finishTimer()
+        moveToSelectedThing(name);
     }
 
-
     return (
-        <div>
-            <h2>{name}</h2>
+        <Card borderRadius="15px" height="100%" backgroundColor="white">
+            <CardHeader>
+                <Heading>{name}</Heading>
+            </CardHeader>
             <div
                 className={"timer-planet-wrapper"}
                 onClick={action}
@@ -24,7 +39,7 @@ const TimerPanel = ({timer, finish, backToThing}) => {
                 </div>
                 <div className={"moon"}></div>
             </div>
-        </div>
+        </Card>
     );
 };
 

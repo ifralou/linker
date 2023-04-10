@@ -1,18 +1,30 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import {IoLogoIonic} from "react-icons/io";
 import {MdAddTask} from "react-icons/md";
 import AddThingForm from "./AddThingForm.jsx";
 import {createPortal} from "react-dom";
 import Menu from "./Menu.jsx";
 import {motion} from "framer-motion";
+import {AppFuncContext} from "../../customReact/contexts/AppFuncContext.jsx";
+import {Heading} from "@chakra-ui/react";
 
-const Dispatcher = ({addNewThing, moveToDescription, moveToNewThing}) => {
+const Dispatcher = () => {
+    const {
+        panesContext: {
+            moveToDescription,
+            moveToNewThing
+        },
+    } = useContext(AppFuncContext);
 
     return (
         <aside>
-            <div className={"row"}>
-                <h1 onClick={moveToDescription} className={"logo-text"}>Linker MK.I</h1>
-            </div>
+            <Heading
+                onClick={moveToDescription}
+                as="h1" size="3xl" pt="5"
+                cursor="pointer"
+            >
+                Linker MK.I
+            </Heading>
 
             <div className={"row center"}>
                 <motion.div
