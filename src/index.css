@@ -24,6 +24,10 @@
   background-color: var(--bg-primary);
 }
 
+li {
+  list-style: none;
+}
+
 body {
   margin: 0;
   display: flex;

@@ -171,7 +171,6 @@ nav > a {
   flex-direction: column;
   align-items: center;
   width: 20%;
-  height: 60px;
 }
 
 .logo-text {
@@ -191,6 +190,7 @@ nav > a {
 
 .calendar-darker-day {
   opacity: 0.3;
+  z-index: 2;
 }
 
 .calendar-cell-name {

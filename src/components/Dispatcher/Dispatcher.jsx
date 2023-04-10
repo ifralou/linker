@@ -1,12 +1,10 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {IoLogoIonic} from "react-icons/io";
-import {MdAddTask} from "react-icons/md";
-import AddThingForm from "./AddThingForm.jsx";
-import {createPortal} from "react-dom";
-import Menu from "./Menu.jsx";
 import {motion} from "framer-motion";
 import {AppFuncContext} from "../../customReact/contexts/AppFuncContext.jsx";
-import {Heading} from "@chakra-ui/react";
+import {CardBody, CardHeader, Heading, Text} from "@chakra-ui/react";
+import CardWrapper from "../ChakraUICutomes/CardWrapper.jsx";
+import SessionInfo from "../SessionInfo.jsx";
 
 const Dispatcher = () => {
     const {
@@ -35,6 +33,8 @@ const Dispatcher = () => {
                     <IoLogoIonic size={200} className={"visual-adjust"}/>
                 </motion.div>
             </div>
+
+            <SessionInfo/>
         </aside>
     );
 };

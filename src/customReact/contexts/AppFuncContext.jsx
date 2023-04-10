@@ -4,6 +4,7 @@ import useActivities from "../hooks/useActivities.js";
 import useRightPanelState from "../hooks/useRightPanelState.js";
 import useTimer from "../hooks/useTimer.js";
 import {dateToString} from "../../utils/time.js";
+import fetchIPInfo from "../../utils/fetchIPInfo.js";
 
 export const AppFuncContext = createContext();
 
@@ -38,7 +39,6 @@ export const AppFuncProvider = ({children}) => {
      * Timer tracks down time spend on a particular task.
      */
     const [timer, startTimer, finishTimer, isActive, getRunningTask] = useTimer(({name, start, end}) => {
-        console.log(name, start, end);
         addNewActivity(dateToString(start), name, start, end);
     }, 1000);
 

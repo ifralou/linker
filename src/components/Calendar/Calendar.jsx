@@ -3,10 +3,14 @@ import {calendar, dateToString, monthNames} from "../../utils/time.js";
 import CalendarTile from "./CalendarTile.jsx";
 import {AppFuncContext} from "../../customReact/contexts/AppFuncContext.jsx";
 import CardWrapper from "../ChakraUICutomes/CardWrapper.jsx";
-import {Box, CardBody, CardHeader, Flex, Heading, HStack, IconButton} from "@chakra-ui/react";
+import {Box, CardBody, CardFooter, CardHeader, Flex, Heading, HStack, IconButton, VStack} from "@chakra-ui/react";
 import {BsChevronLeft, BsChevronRight} from "react-icons/all.js";
+import ApperanceAnimation from "../../customReact/contexts/ApperanceAnimation.jsx";
+import {stringToColour} from "../../utils/color.js";
 
 const Calendar = ({clickAction}) => {
+    //[activities]
+    const [currentHoveredDate, setCurrentHoveredDate] = useState(null);
 
     const {
         activitiesContext: {
@@ -49,7 +53,7 @@ const Calendar = ({clickAction}) => {
                 </Flex>
             </CardHeader>
 
-            <CardBody>
+            <CardBody py="0">
                 <HStack justify="space-around">
                     {dayNames.map((dayName, i) => <Box key={i}>{dayName}</Box>)}
                 </HStack>
@@ -64,11 +68,29 @@ const Calendar = ({clickAction}) => {
                                               currentMonth={monthCalendar.month}
                                               activities={activities[dateToString(d)]}
                                               clickAction={moveToSelectedDay}
+                                              hoverHandler={setCurrentHoveredDate}
                                 />)
                         }
                     </HStack>
                 )}
             </CardBody>
+
+            <CardFooter height="10px">
+                <ApperanceAnimation>
+                    {currentHoveredDate &&
+                        <HStack>
+                            {
+                                currentHoveredDate.map((act, i) =>
+                                    <Box key={i}
+                                         className="calendar-activities-circle"
+                                         style={{backgroundColor: stringToColour(act.name)}}
+                                    ></Box>
+                                )
+                            }
+                        </HStack>
+                    }
+                </ApperanceAnimation>
+            </CardFooter>
 
         </CardWrapper>
     );

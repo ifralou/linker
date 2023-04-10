@@ -20,7 +20,6 @@ const TimerPanel = () => {
     const {name, start, end} = timer;
     const action = (e) => {
         e.preventDefault()
-        console.log("clicked button");
         finishTimer()
         moveToSelectedThing(name);
     }
