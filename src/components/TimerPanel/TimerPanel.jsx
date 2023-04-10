@@ -1,16 +1,27 @@
 import React from 'react';
-import {timerToString} from "../../hooks/useTimer.js";
+import {timerToString} from "../../customReact/hooks/useTimer.js";
+import {useApplicationContext} from "../../customReact/contexts/AppFuncContext.jsx";
 
-const TimerPanel = ({timer, finish, backToThing}) => {
-    console.log(timer);
+const TimerPanel = () => {
+
+    const {
+        timerContext: {
+            timer,
+            finishTimer
+        },
+        panesContext: {
+            moveToSelectedThing
+        }
+
+    } = useApplicationContext();
+
     const {name, start, end} = timer;
     const action = (e) => {
         e.preventDefault()
         console.log("clicked button");
-        finish();
-        backToThing(name);
+        finishTimer()
+        moveToSelectedThing(name);
     }
-
 
     return (
         <div>

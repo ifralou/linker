@@ -1,6 +1,7 @@
 import React from 'react';
+import {useApplicationContext} from "../../customReact/contexts/AppFuncContext.jsx";
 
-const CurrentThing = ({thing, startTimer}) => {
+const CurrentThing = ({thing}) => {
     const {name, description, links} = thing
     console.log(thing)
 
@@ -8,6 +9,20 @@ const CurrentThing = ({thing, startTimer}) => {
         let redirectTo = new URL(document.location.href + "redirect.html");
         links.forEach(({title, url}) => redirectTo.searchParams.append(title, url))
         window.open(redirectTo)
+    };
+
+    const {
+        timerContext: {
+            startTimer,
+        },
+        panesContext: {
+            moveToTimer
+        }
+    } = useApplicationContext();
+
+    const dispatchTimer = () => {
+        startTimer(name);
+        moveToTimer();
     };
 
     return (
@@ -18,7 +33,7 @@ const CurrentThing = ({thing, startTimer}) => {
                     <div>{description}</div>
                 </div>
                 <button className={"info-button background-gradient"}
-                        onClick={() => startTimer(name)}
+                        onClick={dispatchTimer}
                 >Start session</button>
             </div>
             <div>

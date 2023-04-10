@@ -1,6 +1,26 @@
 import React, {useState} from 'react';
+import {useApplicationContext} from "../../customReact/contexts/AppFuncContext.jsx";
+import CardWrapper from "../ChakraUICutomes/CardWrapper.jsx";
+import {
+    CardBody,
+    CardFooter,
+    CardHeader,
+    FormControl,
+    Heading,
+    Input,
+    FormLabel,
+    FormErrorMessage, Button, VStack
+} from "@chakra-ui/react";
 
-const AddThingForm = ({addNewThing}) => {
+
+const AddThingForm = () => {
+
+    const {
+        thingsContext: {
+            addNewThing
+        }
+    } = useApplicationContext();
+
     const [thing, setThing] = useState({
         name: "", description: "", links: []
     })
@@ -22,25 +42,39 @@ const AddThingForm = ({addNewThing}) => {
     }
 
     return (
-        <div className={"modal info-wrapper"}>
-            <h2 className={"modal-header"}>Add new thing:</h2>
-            <form onSubmit={handleSubmit}>
+        <CardWrapper color="white">
+            <CardHeader>
+                <Heading as="h2" size="lg">
+                    Add new task:
+                </Heading>
+            </CardHeader>
 
-                <input type="text"
-                       value={thing.name}
-                       onChange={handleCurrentThingName}
-                       placeholder={"New thing"}
-                />
+            <CardBody>
+                <form onSubmit={handleSubmit}>
+                   <VStack spacing={4}  align="flex-start">
+                       <FormControl>
+                           <Input type="text"
+                               onChange={handleCurrentThingName}
+                               value={thing.name}
+                           />
+                       </FormControl>
 
-                <input type="text"
-                       value={thing.description}
-                       onChange={handleCurrentDescription}
-                       placeholder={"Description of the thing"}
-                />
+                       <FormControl>
+                           <Input
+                               onChange={handleCurrentDescription}
+                               value={thing.description}
+                           />
+                       </FormControl>
 
-                <input type="submit" value="Submit"/>
-            </form>
-        </div>
+                       <Button type="Submit" width="full">Submit</Button>
+                   </VStack>
+                </form>
+            </CardBody>
+
+            <CardFooter>
+
+            </CardFooter>
+        </CardWrapper>
     );
 };
 

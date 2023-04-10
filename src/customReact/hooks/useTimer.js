@@ -1,5 +1,5 @@
 import { useRef, useState} from "react";
-import {getCurrentTime, getHours, getMinutes, getSeconds} from "../utils/time.js";
+import {getCurrentTime, getHours, getMinutes, getSeconds} from "../../utils/time.js";
 
 const initState = {
     name: "", start: "", end: ""
