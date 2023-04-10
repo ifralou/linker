@@ -13,6 +13,9 @@ const Things = () => {
         },
         panesContext: {
             moveToSelectedThing
+        },
+        timerContext: {
+            getRunningTask
         }
     } = useApplicationContext();
 
@@ -29,7 +32,12 @@ const Things = () => {
                         <p>No items here</p> :
                         things.map((thingData, i) =>
                             <GridItem key={i} onClick={(e) => { clickHandler(e, thingData.name) }}>
-                                <Thing thingData={thingData} addLink={addLinkToThing} clickAction={moveToSelectedThing}/>
+                                <Thing
+                                    thingData={thingData}
+                                    addLink={addLinkToThing}
+                                    clickAction={moveToSelectedThing}
+                                    active={getRunningTask === thingData.name}
+                                />
                             </GridItem>)
                     }
                 </Grid>

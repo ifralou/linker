@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {useDrop} from "react-dnd";
 import {NativeTypes} from "react-dnd-html5-backend"
-import {motion} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
+import {TbCurrentLocation} from "react-icons/all.js";
 
 
-const Thing = ({thingData, addLink, clickAction}) => {
+const Thing = ({thingData, addLink, clickAction, active}) => {
     const {name, description, color} = thingData;
 
     const [result, drop] = useDrop({
@@ -102,12 +103,26 @@ const Thing = ({thingData, addLink, clickAction}) => {
                     <motion.h2
                         variants={textTransition}
                     >{name}</motion.h2>
+
                 </motion.div>
 
                 <motion.div
                     className={"thing-color-tile"}
                     variants={additionalTransition}
-                ></motion.div>
+                >
+                    <AnimatePresence>
+                        {active &&
+                            <motion.div
+                                key="target"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                            >
+                                <TbCurrentLocation size={40} color="white"/>
+                            </motion.div>
+                        }
+                    </AnimatePresence>
+                </motion.div>
 
             </motion.div>
         </li>

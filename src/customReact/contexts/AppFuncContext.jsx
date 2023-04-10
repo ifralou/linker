@@ -37,7 +37,7 @@ export const AppFuncProvider = ({children}) => {
      * Custom hook implemented for timer.
      * Timer tracks down time spend on a particular task.
      */
-    const [timer, startTimer, finishTimer, isActive] = useTimer(({name, start, end}) => {
+    const [timer, startTimer, finishTimer, isActive, getRunningTask] = useTimer(({name, start, end}) => {
         console.log(name, start, end);
         addNewActivity(dateToString(start), name, start, end);
     }, 1000);
@@ -64,7 +64,8 @@ export const AppFuncProvider = ({children}) => {
             timer,
             startTimer,
             finishTimer,
-            isActive
+            isActive,
+            getRunningTask
         },
         activitiesContext: {
             activities,

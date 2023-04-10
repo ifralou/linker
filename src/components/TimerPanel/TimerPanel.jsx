@@ -1,6 +1,8 @@
 import React from 'react';
 import {timerToString} from "../../customReact/hooks/useTimer.js";
 import {useApplicationContext} from "../../customReact/contexts/AppFuncContext.jsx";
+import CardWrapper from "../ChakraUICutomes/CardWrapper.jsx";
+import {Card, CardHeader, Heading} from "@chakra-ui/react";
 
 const TimerPanel = () => {
 
@@ -24,8 +26,10 @@ const TimerPanel = () => {
     }
 
     return (
-        <div>
-            <h2>{name}</h2>
+        <Card borderRadius="15px" height="100%" backgroundColor="white">
+            <CardHeader>
+                <Heading>{name}</Heading>
+            </CardHeader>
             <div
                 className={"timer-planet-wrapper"}
                 onClick={action}
@@ -35,7 +39,7 @@ const TimerPanel = () => {
                 </div>
                 <div className={"moon"}></div>
             </div>
-        </div>
+        </Card>
     );
 };
 

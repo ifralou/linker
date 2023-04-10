@@ -41,5 +41,7 @@ export default function useTimer(notifier, ms) {
 
     const isActive = () => !(timer.name === "" && timer.end === "" && timer.start === "");
 
-    return [timer, startTimer, finishTimer, isActive]
+    const getRunningTask = timer.name
+
+    return [timer, startTimer, finishTimer, isActive, getRunningTask]
 }

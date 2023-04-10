@@ -234,34 +234,6 @@ nav > a {
   top: 0
 }
 
-ul {
-  padding: 0;
-  display: grid;
-  grid-gap: 0.5rem;
-}
-
-li {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  list-style-type: none;
-  background-color: #434344;
-  text-align: left;
-}
-
-li:hover {
-  opacity: 0.7;
-}
-
-li > h3 {
-  color: #535bf2;
-  margin: 0;
-}
-
-li > p {
-  margin: 0;
-}
 
 .hoveredLink {
   background-color: goldenrod;
@@ -269,6 +241,9 @@ li > p {
 }
 
 .thing-color-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
 }
 
@@ -374,11 +349,6 @@ li > p {
   tab-index: 0;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  padding: 0 2rem;
-}
 
 .month-name {
   display: flex;

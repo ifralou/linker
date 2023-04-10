@@ -3,19 +3,23 @@ import Things from "./components/Things/Things.jsx";
 import Dispatcher from "./components/Dispatcher/Dispatcher.jsx";
 import Calendar from "./components/Calendar/Calendar.jsx";
 import MobilePanel from "./components/MobilePanel.jsx";
-import {Flex} from "@chakra-ui/react";
+import {Flex, Grid} from "@chakra-ui/react";
 
 function App() {
 
     return (
-        <Flex as="main" align="start" justify={"space-between"}>
+        <Grid as="main"
+              templateColumns="220px 1fr"
+              align="start"
+              justify={"space-between"}
+        >
             <Dispatcher/>
             <section className={"panel-main"}>
                 <MobilePanel/>
                 <Calendar/>
                 <Things/>
             </section>
-        </Flex>
+        </Grid>
     )
 }
 
