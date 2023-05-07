@@ -51,5 +51,7 @@ You can use a timer to monitor the time spent on your tasks.
 A daily summary of all your tasks will be presented in a calendar.
 
 <video controls width="800"> 
-    <source src="./public/draganddrop.webm" type="video/webm">
+    <source src="./public/tracking.webm" type="video/webm">
 </video>
+
+To be continued.
