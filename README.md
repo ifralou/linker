@@ -1,21 +1,27 @@
-## Linker app
-
 ### Motivation
+
     Successfully pass the KAJ.
 
-### Progress: 
+### Progress:
 
 ##### Points to improve:
-1) Global state management is not functioning properly as useContext is being used without adequate memoization.
-2) The styles appear disorganized due to rapid prototyping and frequent changes.
+
+<ol>
+<li>Global state management is not functioning properly as useContext is being used without adequate memoization. </li> 
+<li>The styles appear disorganized due to rapid prototyping and frequent changes.</li>
+</ol>
 
 ##### Solution:
-1) Implement memoization for components or utilize specialized global state management tools like React.
-2) Migrate CSS styles to ChakraUI components.
+
+<ol>
+    <li>Implement memoization for components or utilize specialized global state management tools like React.</li>
+    <li>Migrate CSS styles to ChakraUI components.</li>
+</ol>
+
 
 ##### Functionality:
-Tasks could be added with a form. You could track particular tasks time with a timer.
 
+Tasks could be added with a form. You could track particular tasks time with a timer.
 
 ##### Start state:
 
@@ -26,7 +32,6 @@ Tasks could be added with a form. You could track particular tasks time with a t
 <video controls width="800"> 
     <source src="./public/addtask.webm" type="video/webm">
 </video>
-
 
 #### Drag'n'Drop links to your tasks in order to keep them organized.
 
