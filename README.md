@@ -13,6 +13,8 @@
 2) Migrate CSS styles to ChakraUI components.
 
 ##### Functionality:
+Tasks could be added with a form. You could track particular tasks time with a timer.
+
 
 ##### Start state:
 
