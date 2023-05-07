@@ -16,7 +16,6 @@ height: 100vh;
 }
 
 main {
-  min-width: 900px;
   max-width: 1700px;
   width: 85%;
   background-color: var(--bg-secondary);
@@ -42,6 +41,15 @@ main {
 
   grid-template-columns: minmax(100px, 1fr) minmax(100px, 1fr);
 }
+
+@media (max-width: 960px) {
+  .panel-main {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
 
 aside {
   padding: 1rem;
@@ -415,6 +423,12 @@ nav > a {
   display: grid;
   grid-gap: 30px;
   grid-template-columns: minmax(50px, 1fr) minmax(50px, 1fr);
+}
+
+@media (max-width: 300px) {
+  .panel-wrapper {
+    grid-template-columns: minmax(50px, 1fr);
+  }
 }
 
 .visual-adjust {

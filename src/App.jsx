@@ -9,7 +9,7 @@ function App() {
 
     return (
         <Grid as="main"
-              templateColumns="250px 1fr"
+              templateColumns={["1fr", "1fr", "250px 1fr"]}
               align="start"
               justify={"space-between"}
         >
