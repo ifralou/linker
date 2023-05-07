@@ -2,6 +2,7 @@
 
 ### Motivation
     Successfully pass the KAJ.
+
 ### Progress: 
 
 ##### Points to improve:
@@ -20,8 +21,15 @@ Tasks could be added with a form. You could track particular tasks time with a t
 
 <img src="./public/start.png" width="800px">
 
-##### Add task:
+##### Add a task:
 
-<video width="500"> 
+<video controls width="800"> 
     <source src="./public/addtask.webm" type="video/webm">
+</video>
+
+
+#### Drag'n'Drop links to your tasks in order to keep them organized.
+
+<video controls width="800"> 
+    <source src="./public/draganddrop.webm" type="video/webm">
 </video>
