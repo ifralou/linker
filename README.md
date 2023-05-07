@@ -19,4 +19,7 @@
 <img src="./public/start.png" width="800px">
 
 ##### Add task:
-[Kazam_screencast_00000.mp4](public%2FKazam_screencast_00000.mp4)
+
+<video width="500"> 
+    <source src="./public/addtask.webm" type="video/webm">
+</video>
