@@ -2,7 +2,8 @@
 
     Successfully pass the KAJ.
 
-### Progress:
+### Progress
+Task tracker with local browser persistence using indexedDB fully able to run offline.
 
 ##### Points to improve:
 
@@ -11,7 +12,7 @@
     <li>The styles appear disorganized due to rapid prototyping and frequent changes.</li>
 </ol>
 
-##### Solution:
+##### Solutions:
 
 <ol>
     <li>Implement memoization for components or utilize specialized global state management tools like React.</li>
