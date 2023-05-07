@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDrop} from "react-dnd";
 import {NativeTypes} from "react-dnd-html5-backend"
 import {AnimatePresence, motion} from "framer-motion";
@@ -24,7 +24,7 @@ const Thing = ({thingData, addLink, clickAction, active}) => {
         })
     });
 
-    const [hovered, setHovered] = useState(false);
+    // const [hovered, setHovered] = useState(false);
 
     const actionOnEnter = (e) => {
         if (e.key === "Enter")
@@ -83,11 +83,10 @@ const Thing = ({thingData, addLink, clickAction, active}) => {
 
     return (
         <li
-            ref={drop}
-            tabIndex={0}
+            ref={drop} tabIndex={0}
             onClick={clickHandler}
             onKeyDown={actionOnEnter}
-            className={"thing-dnd"}
+            className={ result.isOver ? "thing-dnd-hovered" : "thing-dnd"}
         >
             <motion.div
                 className={"thing-wrapper"}

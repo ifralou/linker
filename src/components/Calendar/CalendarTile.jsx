@@ -1,10 +1,11 @@
 import React from 'react';
-import {stringToColour} from "../../utils/color.js";
 import {dateToString} from "../../utils/time.js";
-import {Box, Center, Heading} from "@chakra-ui/react";
+import {Center, Heading} from "@chakra-ui/react";
 
 const CalendarTile = ({dayIndex, dayData, currentMonth, activities, clickAction, hoverHandler}) => {
-    const size =  (activities ? activities.length : 0) * 7;
+    const actsLenght = activities ? activities.length : 0;
+    const size =  Number(actsLenght ?? 0) * 3;
+    console.log(actsLenght)
     return (
         <Center onClick={(e) => {
             e.preventDefault();
@@ -19,14 +20,14 @@ const CalendarTile = ({dayIndex, dayData, currentMonth, activities, clickAction,
         >
             <Heading zIndex="10" size={30} p={0} m={0} className={"calendar-tile-date"}>{dayData.date()}</Heading>
 
-            <Box
+            <Center
                 position="absolute"
                 backgroundColor="#DABDA9"
                 borderRadius="50%"
-                width={size}
-                height={size}
+                width={size + "px"}
+                height={size + "px"}
                 zIndex="0"
-            ></Box>
+            ></Center>
         </Center>
     );
 };

@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useContext } from 'react';
 import {IoLogoIonic} from "react-icons/io";
 import {motion} from "framer-motion";
 import {AppFuncContext} from "../../customReact/contexts/AppFuncContext.jsx";
-import {CardBody, CardHeader, Heading, Text} from "@chakra-ui/react";
-import CardWrapper from "../ChakraUICutomes/CardWrapper.jsx";
+import {Heading } from "@chakra-ui/react";
 import SessionInfo from "../SessionInfo.jsx";
+import {GiPlainCircle} from "react-icons/all.js";
 
 const Dispatcher = () => {
     const {
@@ -12,6 +12,9 @@ const Dispatcher = () => {
             moveToDescription,
             moveToNewThing
         },
+        timerContext: {
+            isActive
+        }
     } = useContext(AppFuncContext);
 
     return (
@@ -30,7 +33,10 @@ const Dispatcher = () => {
                     whileHover={{rotate: 270, cursor: "pointer"}}
                     onClick={moveToNewThing}
                 >
-                    <IoLogoIonic size={200} className={"visual-adjust"}/>
+                    {isActive() ?
+                        <GiPlainCircle size={200} className={"visual-adjust"}/> :
+                        <IoLogoIonic size={200} className={"visual-adjust "}/>
+                    }
                 </motion.div>
             </div>
 

@@ -3,7 +3,7 @@ import Things from "./components/Things/Things.jsx";
 import Dispatcher from "./components/Dispatcher/Dispatcher.jsx";
 import Calendar from "./components/Calendar/Calendar.jsx";
 import MobilePanel from "./components/MobilePanel.jsx";
-import {Flex, Grid} from "@chakra-ui/react";
+import {Grid} from "@chakra-ui/react";
 
 function App() {
 
