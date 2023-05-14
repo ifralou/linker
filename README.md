@@ -1,4 +1,4 @@
-## Netlify deploy is right <a href="https://main--shiny-pothos-c1476f.netlify.app/">here</a>.
+# Netlify deploy is right <a href="https://main--shiny-pothos-c1476f.netlify.app/">here</a>.
 
 ### Motivation
 
