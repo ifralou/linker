@@ -1,1 +1,2 @@
-### All info is available on GitHub pages.
+### Readme here: https://ifralou.github.io/linker/
+Semestral APP for KAJ
